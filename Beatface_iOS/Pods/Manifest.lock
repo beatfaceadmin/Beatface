@@ -1,0 +1,78 @@
+PODS:
+  - Alamofire (4.6.0)
+  - Braintree/Card (4.13.0):
+    - Braintree/Core
+  - Braintree/Core (4.13.0)
+  - Braintree/PaymentFlow (4.13.0):
+    - Braintree/Card
+    - Braintree/Core
+  - Braintree/UnionPay (4.13.0):
+    - Braintree/Card
+    - Braintree/Core
+  - BraintreeDropIn (6.1.0):
+    - BraintreeDropIn/DropIn (= 6.1.0)
+  - BraintreeDropIn/DropIn (6.1.0):
+    - Braintree/Card (~> 4.11)
+    - Braintree/Core (~> 4.11)
+    - Braintree/PaymentFlow (~> 4.11)
+    - Braintree/UnionPay (~> 4.11)
+    - BraintreeDropIn/UIKit
+  - BraintreeDropIn/UIKit (6.1.0)
+  - Cloudinary (2.3.0):
+    - Alamofire (~> 4.6.0)
+  - CVCalendar (1.6.1)
+  - GoogleMaps/Base (2.6.0)
+  - GooglePlaces (2.6.0):
+    - GoogleMaps/Base (= 2.6.0)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
+  - SVProgressHUD (2.2.3)
+  - SwiftLocation (3.2.1):
+    - SwiftyJSON (~> 4.0.0-alpha.1)
+  - SwiftyJSON (4.0.0)
+  - SwiftyPickerPopover (6.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - BraintreeDropIn
+  - Cloudinary
+  - CVCalendar (~> 1.6.1)
+  - GooglePlaces
+  - SDWebImage (~> 4.0)
+  - SVProgressHUD
+  - SwiftLocation (~> 3.2.1)
+  - SwiftyPickerPopover
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Braintree
+    - BraintreeDropIn
+    - Cloudinary
+    - CVCalendar
+    - GoogleMaps
+    - GooglePlaces
+    - SDWebImage
+    - SVProgressHUD
+    - SwiftLocation
+    - SwiftyJSON
+    - SwiftyPickerPopover
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Braintree: 1211f518082e9cb1b9cf4b94e646c12a98012061
+  BraintreeDropIn: 2e8bba4facf6cc925176637030454d8308223b95
+  Cloudinary: fd611d907bd6608f3556c40673b628e466809816
+  CVCalendar: 505c11b11a088b43f159806e791eba1c2540853b
+  GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
+  GooglePlaces: f6ddf33b75cef69e888907d9947c57198ed845f3
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SVProgressHUD: a5eaeff664a82dda89809c409ace40183ce91523
+  SwiftLocation: 603153e718a5b4a1e1f114346c2d5e13c16b69da
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  SwiftyPickerPopover: f1bb928efd60e4c754aa957c1bb67372465e9ccb
+
+PODFILE CHECKSUM: ce9686e56b335ed9e68dce919b0aecd8728d5eac
+
+COCOAPODS: 1.5.3
