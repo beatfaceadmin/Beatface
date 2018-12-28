@@ -1,0 +1,100 @@
+<div class="row m-0">
+  <div class="col-2 p-0">
+    <img src="/assets/images/logo_image2.png" class="w-100" alt="">
+    <mat-card class="p-0 h-100 nav_card">
+      <mat-nav-list class="p-0 h-100">
+        <mat-list-item *ngFor="let link of links" matLine class="text_white w-100 font-weight-bold" routerLink="{{link.url}}" routerLinkActive="active-link"
+          routerLinkActive="active-link">
+          <img src="/assets/images/bf.png" class="link_logo mr-1" alt=""> {{ link.name }}
+          <!-- </a> -->
+          <!-- <mat-divider class="bg_white"></mat-divider> -->
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-card>
+  </div>
+  <div class="col-10 p-0">
+
+    <div class="row baar">
+      <div class="col-3">
+        <img src="/assets/images/bf_logo_full.png" class="w-100" alt="">&nbsp;&nbsp;&nbsp;
+      </div>
+      <div class="col-8">
+        <form class="example-form">
+          <div class="row">
+            <div class="col-2">
+              <mat-form-field class="w-100">
+                <mat-select name="selectFilter" [(ngModel)]="selectedFilter">
+                  <mat-option *ngFor="let filter of filters" [value]="filter.field">
+                    {{ filter.displayName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-8">
+              <mat-form-field class="w-100">
+                <input matInput name="seratck" placeholder="Arist Search" aria-label="State" [matAutocomplete]="auto" #searchText (keyup)="searchArtist(searchText.value)"
+                  id="searchBar">
+                <button mat-button matSuffix mat-icon-button aria-label="Clear">
+                  <mat-icon>search</mat-icon>
+                </button>
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let artist of artists?.items" [value]="artist" (click)="onSelectArtist(artist)">
+                    {{ artist?.user?.name}}, Email: {{artist?.email}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="col-1 pt-3">
+        <button mat-button class="float-right" [matMenuTriggerFor]="menu">
+          {{user?.name | titlecase}}
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logOut()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Log Out</span>
+          </button>
+        </mat-menu>
+      </div>
+      <!-- <div class="row">
+          <div class="col-lg-12">
+            <div class="input-group">
+              <div class="input-group-btn">
+
+              <select>
+                        <option value="Artist">Artist</option>
+                        <option value="Location">Location</option>
+                        <option value="Service">Service</option>
+                        <option value="Email">Email</option>
+                      </select>
+
+              </div>
+              <input type="text" class="form-control" aria-label="Text input with dropdown button">
+              <button type="button" class="go">
+                  Search
+                </button>
+            </div>
+          </div>
+
+        </div>  -->
+      <!-- <mat-form-field>
+            <mat-select placeholder="">
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{ food.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+
+      <!-- <span class="example-spacer"></span> -->
+
+    </div>
+    <div class="row p-3 m-0">
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

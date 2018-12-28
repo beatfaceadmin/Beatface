@@ -1,0 +1,115 @@
+<app-spinner [isLoading]="artist?.isProcessing"></app-spinner>
+<div class="row m-0  p-0 mb-2">
+
+  <div class="col-12 mb-1 p-0">
+    <mat-card class="m-0 p-3">
+      <p class="font-weight-bold">Edit Artist
+
+          <a class="float-right" mat-raised-button color="primary" matTooltip="EMAIL" matTooltipPosition="above" href="mailto:{{artist?.properties?.email}}">
+            <mat-icon>email</mat-icon> EMAIL
+          </a>
+
+        <a class="float-right" mat-raised-button color="primary" matTooltip="CANCEL" matTooltipPosition="above" [routerLink]="['../']">
+          <mat-icon>cancel</mat-icon> CANCEL
+        </a>
+        <button class="float-right mr-1" (click)="save()" mat-raised-button color="primary" matTooltip="SAVE" matTooltipPosition="above">
+          <mat-icon>save</mat-icon> SAVE
+        </button>
+      </p>
+    </mat-card>
+  </div>
+  <div class="col-4 p-0">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar>
+          <img class="example-header-image" [src]="artist?.properties?.user?.picUrl || '/assets/images/user.png'" alt="">
+        </div>
+        <mat-card-title class="font-weight-bold">{{ artist?.properties?.user.name || 'N/A' | titlecase}}</mat-card-title>
+        <mat-card-subtitle>
+          <span class="font-weight-bold">Status:</span> {{artist?.properties?.status | titlecase}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="artist?.properties?.coverPic  || '/assets/images/bf_logo_full.png'" style="height: 156px;" class="img_bg" alt="">
+      <mat-card-content>
+        <h5>Attachments</h5>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li *ngFor="let img of artist?.properties?.attachment; let i = index" data-target="#carouselExampleIndicators" data-slide-to="0"
+              class="active"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div *ngFor="let img of artist?.properties?.attachment; let x = index" class="carousel-item {{x == 0 ?'active':''}}" style="height: 200px">
+              <img class="d-block w-100" [src]="img" alt="First slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev bg" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next bg" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col pl-1 pr-0">
+    <mat-card>
+      <mat-card-content>
+        <div class="row py-2">
+          <div class="col">
+            <mat-form-field class="w-100">
+              <mat-select [(ngModel)]="artist.properties.status" placeholder="Status">
+                <mat-option [value]="'pending'"> Pending </mat-option>
+                <mat-option [value]="'approved'"> Approve </mat-option>
+                <mat-option [value]="'rejected'"> Reject </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Rating" [(ngModel)]="artist.properties.rating">
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row py-2">
+          <div class="col-3 font-weight-bold">Business Name:</div>
+          <div class="col">{{artist?.properties?.businessName}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row py-2">
+          <div class="col-3 font-weight-bold">Business Address:</div>
+          <div class="col">{{artist?.properties?.businessAddress}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row py-2">
+          <div class="col-3 font-weight-bold">Business Phone:</div>
+          <div class="col">{{artist?.properties?.phone}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row py-2">
+          <div class="col-3 font-weight-bold">Business Email:</div>
+          <div class="col">{{artist?.properties?.email}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row py-2">
+          <div class="col-3 font-weight-bold">Availbility Time:</div>
+          <div class="col">From- {{artist?.properties?.availbilityStart | date:'HH : mm'}} To- {{artist?.properties?.availbilityTill | date:'HH
+            : mm'}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row py-2">
+          <div class="col-3 font-weight-bold">Availbility Area:</div>
+          <div class="col">{{artist?.properties?.availbilityArea}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <agm-map style="height: 175px;" *ngIf="artist?.properties?.businessCordinates" [latitude]="artist?.properties?.businessCordinates[0]"
+          [longitude]="artist?.properties?.businessCordinates[1]">
+          <agm-marker [latitude]="artist?.properties?.businessCordinates[0]" [longitude]="artist?.properties?.businessCordinates[1]"></agm-marker>
+        </agm-map>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

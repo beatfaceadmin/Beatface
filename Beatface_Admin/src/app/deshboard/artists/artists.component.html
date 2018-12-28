@@ -1,0 +1,57 @@
+
+<app-spinner [isLoading]="artists?.isLoading"></app-spinner>
+<div class="row m-0 p-0">
+  <div class="col-12 mb-1 p-0">
+    <mat-card class="">
+      <mat-card-content>
+        <p class="font-weight-bold">ARTISTS
+          <mat-form-field class="float-right">
+            <mat-select placeholder="Status Filter" [(value)]="artists.filters.properties['status'].value" [value]="artists.filters.properties['status'].value"
+              (change)="fetch()">
+              <mat-option [value]=""> All </mat-option>
+              <mat-option [value]="'pending'"> Pending </mat-option>
+              <mat-option [value]="'approved'"> Approve </mat-option>
+              <mat-option [value]="'rejected'"> Reject </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="row m-0 p-0">
+    <div class="col-4 p-0 m-0" *ngFor="let artist of artists?.items;let i =index">
+      <mat-card class="m-2">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <img class="example-header-image" [src]="artist?.user?.picUrl || '/assets/images/user.png'" alt="">
+          </div>
+          <mat-card-title class="font-weight-bold">{{ artist?.user.name || 'N/A' | titlecase}}</mat-card-title>
+          <mat-card-subtitle>
+            <span class="font-weight-bold">Status:</span> {{artist?.status | titlecase}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="artist?.coverPic  || '/assets/images/NOIMA.jpg'" style="height: 156px;" class="img_bg" alt="">
+        <mat-card-content>
+          <div class="col-12">
+            <mat-form-field class="w-100">
+              <mat-select [(ngModel)]="artist.status" placeholder="Status">
+                <mat-option [value]="'pending'"> Pending </mat-option>
+                <mat-option [value]="'approved'"> Approve </mat-option>
+                <mat-option [value]="'rejected'"> Reject </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Rating" [(ngModel)]="artist.rating">
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="update(artist)">SAVE</button>
+          <button mat-raised-button color="primary" [routerLink]="[artist.id]">VIEW</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

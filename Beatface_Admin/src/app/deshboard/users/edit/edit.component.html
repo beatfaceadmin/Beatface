@@ -1,0 +1,52 @@
+<div class="row">
+  <app-spinner [isLoading]="user?.isProcessing"></app-spinner>
+  <div class="offset-1 col-10">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title class="font-weight-bold">Edit User</mat-card-title>
+      </mat-card-header>
+      <form [formGroup]="userForm" novalidate (ngSubmit)="create()">
+        <mat-card-content>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" formControlName="name" name="name" [(ngModel)]="user.properties.name">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="gender">Gender</label>
+              <input type="text" class="form-control" formControlName="gender" name="gender" [(ngModel)]="user.properties.gender">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" formControlName="location" name="location" [(ngModel)]="user.properties.location">
+          </div>
+          <div class="form-group">
+            <label for="age">DOB</label>
+            <input type="date" class="form-control" formControlName="dob" name="dob" [(ngModel)]="user.properties.dob">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="status">Status</label>
+              <select class="form-control" formControlName="status" name="status" [(ngModel)]="user.properties.status">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="pending">Pending</option>
+              </select>
+            </div>
+          </div>
+
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" matTooltip="SAVE" matTooltipPosition="above">
+            <mat-icon>save</mat-icon> SAVE
+          </button>
+          <button mat-raised-button color="primary" matTooltip="CANCEL" matTooltipPosition="above" [routerLink]="['../../']">
+            <mat-icon>cancel</mat-icon> CANCEL
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+</div>

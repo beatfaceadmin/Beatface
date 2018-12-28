@@ -1,0 +1,131 @@
+<div id="white" class="container">
+  <div class="edit_btn">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Edit
+    </button>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <div class="lftimg">
+        <input id="upload" name="df" type="file" ng2FileSelect [uploader]="uploader" placeholder="Upload File" class="upload">
+
+        <!-- <img src="../../../assets/images/thumbnail.png" class="logo1" alt=""> -->
+        <p class="thumbnail">Upload Product Thumbnail</p>
+        <br/>
+        <button *ngFor="let item of uploader?.queue" class="upbtn" (click)="upload()">Upload</button>
+      </div>
+
+
+
+      <div class="txtbox">
+        <p class="rating">Rating?</p>
+        <select>
+          <option>rating</option>
+        </select>
+        <!-- <input class="txtbox" type="text" value="">
+          <img src="../../../assets/images/drp_dwn.png" class="imgtxt" alt=""> -->
+      </div>
+      <!-- <div class="txtbox1">
+          <p class="rating1">Average Rating All Users?</p>
+            <input class="txtbox1" type="text" value="">
+            <img src="../../../assets/images/drp_dwn.png" class="imgtxt1" alt="">
+        </div> -->
+    </div>
+    <div class="col-9">
+      <!-- <select name="abc" [(ngModel)]="name">
+            <option value="" disabled>Product</option>
+            <option *ngFor="let product of products?.items" [value]="product.id">{{product.name}}</option>
+          </select> -->
+      <input class="txtbox2" type="text" value="" placeholder="Product">
+      <img src="../../../assets/images/drp_dwn.png" class="img3" alt="">
+      <div class="txtbox">
+        <p class="line1">Q: Specially Recomended by?</p>
+        <input class="qus" type="text" value="">
+
+      </div>
+
+      <div class="txtbox">
+        <p class="line1">Q: Why we love this?</p>
+        <!-- <select name="abc" [(ngModel)]="selectionReason">
+              <option value="" disabled>Why we love this?</option>
+              <option *ngFor="let product of products?.items" [value]="product.id">{{product.selectionReason}}</option>
+            </select> -->
+        <!-- <input class="txtbox2" type="text" [(ngModel)]="product.selectionReason" name="word" placeholder="Why we love this"> -->
+        <img src="../../../assets/images/add.png" class="img3" (click)="addWord()">
+
+
+        <div class="animated fadeIn">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header"></div>
+                <div class="card-body table-responsive">
+                  <table class="table table-bordered table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Selection Reason</th>
+                        <th>Delete/Edit</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr *ngFor="let product of products?.items">
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.selectionReason}}</td>
+                        <td>
+                          <!-- <a [routerLink]="['/pages/appointment/update',appointment.id]"> <img src="/assets/images/edtt.png" class="editt"></a>
+                             <img src="/assets/images/dlt.png"  (click)="deleteappointment(appointment.id)" class="del"> -->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--/.col-->
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="txtbox">
+        <p class="line1">Q:product Specifications?</p>
+        <!-- <select name="abc" [(ngModel)]="specifications">
+            <option value="" disabled>product Specifications</option>
+            <option *ngFor="let product of products?.items" [value]="product.id">{{product.specifications}}</option>
+          </select> -->
+        <input class="txtbox2" type="text" value="">
+        <img src="../../../assets/images/add.png" class="img3" alt="">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <!-- Button trigger modal -->

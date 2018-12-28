@@ -1,0 +1,182 @@
+<app-spinner [isLoading]="spotlights?.isLoading || artists?.isLoading || spotlight?.isProcessing"></app-spinner>
+<div class="row">
+  <div class="col-12 p-0">
+    <mat-card class="m-2 p-3">
+      <div class="row">
+        <div class="col-4">
+          <span class="float-left font-weight-bold">SPOTLIGHTS</span>
+        </div>
+        <div class="col-4">
+          <!-- <form [formGroup]="stateForm">
+            <mat-form-field>
+              <input type="text" matInput placeholder="Month" formControlName="stateGroup" required [matAutocomplete]="autoGroup"/>
+                <mat-autocomplete #autoGroup="matAutocomplete">
+                  <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                    <mat-option *ngFor="let name of group.names" [value]="name">
+                      {{ name }}
+                    </mat-option>
+                </mat-optgroup>
+              </mat-autocomplete>
+            </mat-form-field> 
+          </form> -->
+        </div>
+         <div class="col-4"> 
+          <button mat-raised-button color="primary" class="float-right" (click)="newSpot()">NEW</button>
+          <!-- <mat-form-field>
+            <mat-select placeholder="Current Select Month">
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{ food.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+        </div> 
+      </div>
+    </mat-card>
+  </div>
+  <div class="col-12 p-0" *ngIf="isNew">
+    <mat-card class="m-2 p-3">
+      <p class="font-weight-bold">New Spotlight</p>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="w-50">
+            <mat-select [(value)]="spotlight.properties.artistId" placeholder="Select Artist">
+              <mat-option *ngFor="let artist of artists?.items" [value]="artist.id">
+                {{ artist?.businessName || artist?.user?.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <!-- <p>Selection Reasons</p> -->
+          <mat-form-field class="w-75">
+            <input matInput #reason placeholder="Add Reason">
+          </mat-form-field>
+          <button class="float-right" mat-mini-fab color="primary" (click)="add('SR', spotlight.properties, reason.value)">
+            <mat-icon>add</mat-icon>
+          </button>
+          <mat-list role="list" class="w-100" *ngIf="!spotlight.isProcessing">
+            <mat-list-item *ngFor="let sr of spotlight.properties.month; let i = index" role="listitem">
+              <button class="mr-2" mat-icon-button color="primary" (click)="removeItem(i, spotlight.properties.month)">
+                <mat-icon>close</mat-icon>
+              </button>
+              {{sr | titlecase}}
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-6">
+          <p>Selection Reasons</p>
+          <mat-form-field class="w-75">
+            <input matInput #reason placeholder="Add Reason">
+          </mat-form-field>
+          <button class="float-right" mat-mini-fab color="primary" (click)="add('SR', spotlight.properties, reason.value)">
+            <mat-icon>add</mat-icon>
+          </button>
+          <mat-list role="list" class="w-100" *ngIf="!spotlight.isProcessing">
+            <mat-list-item *ngFor="let sr of spotlight.properties.selectionReason; let i = index" role="listitem">
+              <button class="mr-2" mat-icon-button color="primary" (click)="removeItem(i, spotlight.properties.selectionReason)">
+                <mat-icon>close</mat-icon>
+              </button>
+              {{sr | titlecase}}
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-6">
+          <p>Specialties</p>
+          <mat-form-field class="w-75">
+            <input matInput #specialties placeholder="Add Reason">
+
+          </mat-form-field>
+          <button class="float-right" mat-mini-fab color="primary" (click)="add('SP', spotlight.properties, specialties.value)">
+            <mat-icon>add</mat-icon>
+          </button>
+          <mat-list role="list" class="w-100" *ngIf="!spotlight.isProcessing">
+            <mat-list-item *ngFor="let sp of spotlight.properties.specialties; let x = index" role="listitem" class="w-100">
+
+              <button class="mr-2" mat-icon-button color="primary" (click)="removeItem(x, spotlight.properties.specialties)">
+                <mat-icon>close</mat-icon>
+              </button> {{sp | titlecase}}
+
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+      <mat-action-row>
+        <button mat-raised-button color="primary" (click)="save(spotlight.properties)">SAVE</button>
+        <button mat-raised-button *ngIf="spotlights.items.length != 0" color="warn" (click)="isNew = false">Cancel</button>
+      </mat-action-row>
+    </mat-card>
+  </div>
+
+  <div class="col p-0">
+    <mat-accordion >
+      <mat-expansion-panel class="mx-2" *ngFor="let spot of spotlights?.items">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Month: {{ spot?.month  | titlecase}}
+          </mat-panel-title>
+          <mat-panel-description>
+            Artist Name: {{spot.artist?.email | titlecase }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <form class="w-100">
+            <mat-card class="m-2 p-3">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12">
+                    <mat-form-field class="w-100">
+                      <mat-select [(value)]="spot.artistId" placeholder="Select Artist">
+                        <mat-option *ngFor="let artist of artists?.items" [value]="artist.id">
+                          {{ artist?.businessName || artist?.user?.name }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6">
+                    <p>Selection Reasons</p>
+                    <mat-form-field class="w-75">
+                      <input matInput #reason placeholder="Add Reason">
+
+                    </mat-form-field>
+                    <button class="float-right" mat-mini-fab color="primary" (click)="add('SR', spot, reason.value)">
+                      <mat-icon>add</mat-icon>
+                    </button>
+                    <mat-list role="list" class="w-100" *ngIf="!spotlight.isProcessing">
+                      <mat-list-item *ngFor="let sr of spot.selectionReason; let i = index" role="listitem">
+                        <button class="mr-2" mat-icon-button color="primary" (click)="removeItem(i, spot.selectionReason)">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                        {{sr | titlecase}}
+                      </mat-list-item>
+                    </mat-list>
+                  </div>
+                  <div class="col-6">
+                    <p>Specialties</p>
+                    <mat-form-field class="w-75">
+                      <input matInput #specialties placeholder="Add Reason">
+
+                    </mat-form-field>
+                    <button class="float-right" mat-mini-fab color="primary" (click)="add('SP', spot, specialties.value)">
+                      <mat-icon>add</mat-icon>
+                    </button>
+                    <mat-list role="list" class="w-100" *ngIf="!spotlight.isProcessing">
+                      <mat-list-item *ngFor="let sp of spot.specialties; let x = index" role="listitem" class="w-100">
+
+                        <button class="mr-2" mat-icon-button color="primary" (click)="removeItem(x, spot.specialties)">
+                          <mat-icon>close</mat-icon>
+                        </button> {{sp | titlecase}}
+                      </mat-list-item>
+                    </mat-list>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </form>
+        </div>
+        <mat-action-row>
+          <button mat-raised-button color="primary" (click)="save(spot)">SAVE</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

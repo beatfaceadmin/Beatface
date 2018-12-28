@@ -1,0 +1,29 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="offset-3 col-6">
+          <mat-card class="m-5">
+            <mat-card-header>
+              <mat-card-title class="font-weight-bold">
+                <div class="row">LOGIN</div>
+              </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="/assets/images/bf_logo_full.png" style="height: 156px;" class="img_bg" alt="">
+            <form [formGroup]="loginForm" (ngSubmit)="logIn()" autocomplete="off">
+              <mat-card-content class="mt-2">
+                <mat-form-field class="w-100">
+                  <input matInput type="email" placeholder="Email" formControlName="email">
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input matInput type="password" placeholder="Password" formControlName="password">
+                </mat-form-field>
+              </mat-card-content>
+              <mat-divider></mat-divider>
+              <mat-card-actions class="text-center">
+                <button mat-raised-button color="primary" [disabled]="loginForm.invalid">LOGIN</button>
+              </mat-card-actions>
+            </form>
+          </mat-card>
+        </div>
+      </div>
+</div>

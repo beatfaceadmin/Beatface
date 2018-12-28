@@ -1,0 +1,110 @@
+
+
+<app-spinner [isLoading]="appointments?.isLoading"></app-spinner>
+<div *ngIf="!appointments?.isLoading" class="row">
+  <div class="col-12 p-0">
+    <mat-card class="m-2 p-3">
+      <div class="row">
+        <div class="col-6">
+          <span class="float-left font-weight-bold">APPOINTMENTS</span>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="float-right">
+            <mat-select placeholder="Filter" [(ngModel)]="appointments.filters.properties['status'].value" (selectionChange)="fetch()">
+              <mat-option *ngFor="let s of status" [value]="s">
+                {{s || 'All' | titlecase}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="col-12 col-sm-12 col-md-4 p-0" *ngFor="let appointment of appointments?.items">
+    <mat-card class="m-2">
+      <mat-card-header>
+        <mat-card-title class="font-weight-bold m-0">
+            &nbsp;Time :
+          <span *ngIf="appointment?.time">{{appointment?.time | date:'h:mm a'}}</span>
+          <span *ngIf="!appointment?.time">N/A</span>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <br>
+         &nbsp; <span class="font-weight-bold">Service Cost:</span> {{appointment?.price || 'N/A'}}
+          <br>
+          &nbsp; <span class="font-weight-bold">GrandTotal:</span> {{appointment?.grandTotal || 'N/A'}}
+          <br>
+          &nbsp; <span class="font-weight-bold">Status:</span> {{appointment?.status | titlecase}}
+          <div class="col-12">
+            </div>
+      </mat-card-subtitle>
+      
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+          <div class="col-12">
+            <mat-form-field class="w-50">
+           <mat-select [(ngModel)]="appointment.status" placeholder="Status">
+                
+                  <mat-option [value]="'pending'"> Pending </mat-option>
+                  <mat-option [value]="'active'"> Active </mat-option>
+                  <mat-option [value]="'start'"> start </mat-option>
+                  <mat-option [value]="'complete'"> complete </mat-option>
+                  <mat-option [value]="'cancel'"> cancel </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          
+        </mat-card-content>
+        <mat-divider></mat-divider>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-3 font-weight-bold"></div>
+          <div class="col">
+            
+          </div>
+        </div>
+        <!-- <div class="row">
+          <div class="col-3 font-weight-bold">Payment Status:</div>
+          <div class="col">
+            <select [(ngModel)]="appointment.status" (change)="update(appointment)">
+              <option value="pending">Pending</option>
+              <option value="active">Active</option>
+              <option value="start">start</option>
+              <option value="complete">complete</option>
+              <option value="cancel">cancel</option>
+            </select>
+          </div>
+        </div> -->
+        <div class="row">
+          <div class="col-3 font-weight-bold">Address:</div>
+          <div class="col"> {{appointment?.address || 'N/A' | titlecase}}</div>
+        </div>
+        <div class="row height_50px">
+          <div class="col-3 font-weight-bold">Landmark:</div>
+          <div class="col">{{appointment?.addressDescription || 'N/A' | titlecase}}</div>
+        </div>
+        <div class="row">
+            <div class="col-3 font-weight-bold">Comments:</div>
+            <div class="col">{{appointment?.comments || 'N/A' | titlecase}}</div>
+          </div>
+          <div class="row">
+            <div class="col-3 font-weight-bold">Urgent:</div>
+            <div class="col">
+              {{appointment?.isUrgent ? 'Yes':'No'}}
+            </div>
+          </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+        <!-- <button class="edit">EDIT</button> -->
+        <button mat-raised-button color="primary" [routerLink]="['/pages/appointment/update',appointment?.id]">
+          EDIT
+        </button>
+        <button mat-raised-button color="warn" (click)="deleteappointment(appointment?.id)">
+            DELETE
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

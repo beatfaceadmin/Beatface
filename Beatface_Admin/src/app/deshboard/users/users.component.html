@@ -1,0 +1,56 @@
+<app-spinner [isLoading]="users?.isLoading"></app-spinner>
+<div class="row">
+  <div class="col-12 p-0">
+    <mat-card class="m-2 p-3">
+      <p class="font-weight-bold">USERS</p>
+    </mat-card>
+  </div>
+  <div class="col col-sm col-md-4 p-0" *ngFor="let user of users?.items">
+    <mat-card class="m-2">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <img class="example-header-image" [src]="user?.picUrl || '/assets/images/user.png'" alt="">
+        </div>
+        <mat-card-title class="font-weight-bold">{{ user.name || 'N/A' | titlecase}}</mat-card-title>
+        <mat-card-subtitle>
+          <span class="font-weight-bold">Status:</span> {{user?.status | titlecase}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-3 font-weight-bold">DOB:</div>
+          <div class="col">
+            <span *ngIf="user.dob">{{user.dob | date}}</span>
+            <span *ngIf="!user.dob">N/A</span>
+          </div>
+
+        </div>
+        <!-- <div class="row">
+            <div class="col-3 font-weight-bold">Phone:</div>
+            <div class="col">
+              <span *ngIf="user.phone">{{user.phone}}</span>
+             
+            </div>
+  
+          </div> -->
+        <div class="row">
+          <div class="col-3 font-weight-bold">Gender:</div>
+          <div class="col"> {{user?.gender || 'N/A' | titlecase}}</div>
+        </div>
+        <div class="row">
+          <div class="col-3 font-weight-bold">Location:</div>
+          <div class="col">{{user?.location || 'N/A' | titlecase}}</div>
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="['/pages/users/edit',user.id]">
+          EDIT
+        </button>
+        <button mat-raised-button color="warn" (click)="deleteuser(user.id)">
+          DELETE
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

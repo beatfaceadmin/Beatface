@@ -1,0 +1,163 @@
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin-left: 15px;
+    margin-right: -93px;
+    margin-top: -2px;
+}
+
+th {
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    background-color: #8080802e;
+}
+
+nav {
+    margin-top: 19px;
+    margin-left: 13px;
+}
+.h1, h1 {
+    font-size: 14px;
+    margin-left: 13px;
+    margin-top: 12px;
+    color: white;
+}
+img.logo2 {
+    height: 28px;
+}
+img.logo3 {
+    height: 28px;
+    margin-left: 23px;
+}
+input#search {
+    float: right;
+    margin-right: 62px;
+}
+/* img.logo4 {
+    height: 30px;
+    float: right;
+    margin-right: -195px;
+    margin-top: 7px
+} */
+/* img#srch {
+    height: 30px;
+    float: right;
+    margin-right: -195px;
+    margin-top: 7px;
+} */
+
+img#fdbck {
+    height: 30px;
+    float: right;
+    margin-right: -195px;
+    margin-top: 1%;
+}
+
+button, select {
+    text-transform: none;
+    height: 33px;
+    width: 164px;
+    margin-top: 8px;
+    margin-left: 5px;
+}
+input#search[_ngcontent-c2] {
+    float: right;
+    margin-right: 40px;
+    margin-top: 1% !important
+    /* margin-left: -15px; */
+}
+
+button {
+    
+    color: white;
+    background: #534278;
+    border-color: #534278;
+    float: right;
+    height: 29px;
+    width: 113px;
+}
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #534278;
+    border-color: #534278;
+   
+}
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: gray;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+@media screen and (max-width: 414px) and (min-width: 320px) {
+    
+    .animated.fadeIn {
+        width: 100%;
+        float: left;
+    }
+    .row {
+        width: 100%;
+        float: left;
+        margin: 0;
+        padding: 0;
+    }
+    .col-lg-12 {
+        width: 100%;
+        float: left;
+        padding: 0;
+    }
+    .card {
+        width: 100%;
+        float: left;
+        margin-left: 15px;
+    margin-top: 15px;
+    }
+    .card-header {
+        padding: 0;
+        width: 100%;
+        float: left;
+    }
+    .card-body {
+        width: 100%;
+        float: left;
+        display: inline-grid;
+    }
+    nav[_ngcontent-c1] {
+        margin-top: 19px;
+        float: right;
+        float: left;
+    }
+    table.table.table-bordered.table-striped.table-sm {
+        width: 100%;
+        float: left;
+        margin: 0;
+        padding: 0;
+        font-size: 10px;
+    }
+    
+      }

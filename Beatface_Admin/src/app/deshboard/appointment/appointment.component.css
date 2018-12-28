@@ -1,0 +1,41 @@
+
+      .height_100px {
+        height: 100px;
+    }
+
+    
+    button.mat-raised-button {
+        /* background-color: #6b6396; */
+        color: white;
+        border-radius: 28px;
+        font-size: 12px;
+    }
+    mat-card.m-2.p-3.mat-card {
+        height: 65px;
+    }
+
+    button.mat-raised-button {
+        color: white;
+        border-radius: 28px;
+        font-size: 12px;
+        /* background-color: #c53b3b; */
+    }
+
+
+    .col-12.font-weight-bold {
+        margin-left: -21px;
+    }
+
+    button.user {
+        color: white;
+        background-color: #6b6396;
+        border-color: #6b6396;
+        width: 91px;
+        height: 39px;
+        border-radius: 20px;
+        font-size: 12px;
+    }
+    mat-card-content.mat-card-content {
+        margin-top: 12px;
+    }
+    

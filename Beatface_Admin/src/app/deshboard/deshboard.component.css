@@ -1,0 +1,86 @@
+.nav_card {
+    background-color: #6b6396;
+}
+
+.link_logo {
+    width: 13%;
+}
+
+.text_white {
+    color: white;
+    font-size: 13px;
+    font-family: 'Raleway';
+}
+
+.bg_white {
+    background-color: white;
+}
+
+.active-link {
+    color: yellow !important;
+    background-color: #524b77 !important;
+}
+
+.bg_black {
+    background: #ffffffd1;
+}
+
+.nav_bar {
+    box-shadow: 0 3px 37px -1px #9f9d9d;
+    color: #9f9d9d;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.row {
+    margin-left: 12px;
+}
+
+button.btn.btn-secondary.dropdown-toggle {
+    background-color: #6b6396;
+    margin-right: -8px;
+}
+
+button {
+    margin-left: -4px;
+    width: 118px;
+}
+
+mat-toolbar.bg_black.nav_bar.mat-toolbar.mat-toolbar-single-row {
+    height: 97px;
+}
+
+button.go {
+    margin-left: 9px;
+    /* border-color: #d2d666;
+  background-color: #d2d666; */
+}
+
+.baar {
+    background-color: whitesmoke;
+    margin: 0;
+    box-shadow: 5px 0 9px 2px #69686f;
+}
+
+.input-group {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 150%;
+}
+
+select {
+    width: 103px;
+    height: 40px;
+    margin-right: -4px;
+    background-color: #6b6396;
+    color: white;
+}
